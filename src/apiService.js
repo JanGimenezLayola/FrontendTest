@@ -30,6 +30,17 @@ export const apiService = {
     }
   },
 
+  async findRepoStars(username, repoName) {
+    const apiEndpoint = `https://api.github.com/repos/${username}/${repoName}/stargazers`
+    try {    
+      const response = await fetch(apiEndpoint)    
+      const data = await response.json()           
+      return data;   
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
   async findRepoBranches(username, repoName) {
     const apiEndpoint = `https://api.github.com/repos/${username}/${repoName}/branches`
     try {    

@@ -55,22 +55,25 @@ export const viewsController = {
   },
 
   getUserRepos(data) {
-    
     console.log(data);
-    
+        
     data.forEach(async (repo) => {      
+            
       const repoContainer = document.createElement("article")
       repoContainer.setAttribute("class", "repo-container")
 
       const name = document.createElement("p")
-      const branches = document.createElement("p")
+      const stars = document.createElement("p")
+      const forks = document.createElement("p")
       
       name.innerHTML = repo.name
       repoContainer.appendChild(name)
 
-      const data = await apiService.findRepoBranches(repo.owner.login, repo.name)
-      branches.innerHTML = data.length
-      repoContainer.appendChild(branches)
+      stars.innerHTML = repo.stargazers_count
+      repoContainer.appendChild(stars)      
+
+      forks.innerHTML = repo.forks_count
+      repoContainer.appendChild(forks)
       
       resultsContainer.appendChild(repoContainer)    
     })

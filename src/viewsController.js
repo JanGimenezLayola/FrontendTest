@@ -11,9 +11,30 @@ export const viewsController = {
 
   },
 
-  getInfoUser(user) {     
+  getInfoUser(user) {  
+
+    const resultsInfo = document.createElement("div")
+    const infoContainer = document.createElement("div")
+    const username = document.createElement("p")
+    const name = document.createElement("h2")
+    const bio = document.createElement("p")
     
-    console.log(user.name);
+    resultsInfo.setAttribute("class", "results-container")
+    infoContainer.setAttribute("class", "info-container")
+    username.setAttribute("class", "username")
+    name.setAttribute("class", "name")
+    bio.setAttribute("class", "bio")
+
+    username.innerHTML = `@${user.login}`
+    infoContainer.appendChild(username)
+
+    name.innerHTML = user.name
+    infoContainer.appendChild(name)
   
+    bio.innerHTML = user.bio
+    infoContainer.appendChild(bio)
+
+    resultsInfo.appendChild(infoContainer)
+    resultsContainer.appendChild(resultsInfo)   
   }
 }

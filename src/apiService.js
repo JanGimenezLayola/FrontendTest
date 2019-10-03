@@ -19,13 +19,23 @@ export const apiService = {
   },
 
   async findRepos(username) {
-    console.log('repossss');
     
     const apiEndpoint = `https://api.github.com/users/${username}/repos`
     try {    
       const response = await fetch(apiEndpoint)    
       const data = await response.json()        
       viewsController.getUserRepos(data)    
+    } catch (error) {
+      console.log(error);
+    }
+  },
+
+  async findRepoBranches(username, repoName) {
+    const apiEndpoint = `https://api.github.com/repos/${username}/${repoName}/branches`
+    try {    
+      const response = await fetch(apiEndpoint)    
+      const data = await response.json()           
+      return data;   
     } catch (error) {
       console.log(error);
     }

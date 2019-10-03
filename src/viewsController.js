@@ -1,3 +1,5 @@
+import { apiService } from './apiService.js'
+
 const resultsContainer = document.getElementById("resultsContainer")
 
 export const viewsController = {
@@ -15,45 +17,64 @@ export const viewsController = {
 
     const resultsInfo = document.createElement("div")
 
-      const imgContainer = document.createElement("div")
-      const img = document.createElement("img")
+    const imgContainer = document.createElement("div")
+    const img = document.createElement("img")
 
-      const infoContainer = document.createElement("div")
-      const username = document.createElement("p")
-      const name = document.createElement("h2")
-      const bio = document.createElement("p")
+    const infoContainer = document.createElement("div")
+    const username = document.createElement("p")
+    const name = document.createElement("h2")
+    const bio = document.createElement("p")
 
 
-      resultsInfo.setAttribute("class", "results-container")
+    resultsInfo.setAttribute("class", "results-container")
 
-      imgContainer.setAttribute("class", "img-container")
-      img.setAttribute("class", "profile-img")
+    imgContainer.setAttribute("class", "img-container")
+    img.setAttribute("class", "profile-img")
 
-      infoContainer.setAttribute("class", "info-container")
-      username.setAttribute("class", "username")
-      name.setAttribute("class", "name")
-      bio.setAttribute("class", "bio")
-    
+    infoContainer.setAttribute("class", "info-container")
+    username.setAttribute("class", "username")
+    name.setAttribute("class", "name")
+    bio.setAttribute("class", "bio")
+  
 
-      img.src = user.avatar_url
-      imgContainer.appendChild(img)
-      resultsInfo.appendChild(imgContainer)
+    img.src = user.avatar_url
+    imgContainer.appendChild(img)
+    resultsInfo.appendChild(imgContainer)
 
-      username.innerHTML = `@${user.login}`
-      infoContainer.appendChild(username)
-    
-      name.innerHTML = user.name
-      infoContainer.appendChild(name)
-    
-      bio.innerHTML = user.bio
-      infoContainer.appendChild(bio)
+    username.innerHTML = `@${user.login}`
+    infoContainer.appendChild(username)
+  
+    name.innerHTML = user.name
+    infoContainer.appendChild(name)
+  
+    bio.innerHTML = user.bio
+    infoContainer.appendChild(bio)
 
-      resultsInfo.appendChild(infoContainer)
-      resultsContainer.appendChild(resultsInfo)    
+    resultsInfo.appendChild(infoContainer)
+    resultsContainer.appendChild(resultsInfo)    
   },
 
   getUserRepos(data) {
+    
     console.log(data);
     
+    data.forEach(async (repo) => {      
+      const repoContainer = document.createElement("article")
+      repoContainer.setAttribute("class", "repo-container")
+
+      const name = document.createElement("p")
+      const branches = document.createElement("p")
+      
+      name.innerHTML = repo.name
+      repoContainer.appendChild(name)
+
+      const data = await apiService.findRepoBranches(repo.owner.login, repo.name)
+      branches.innerHTML = data.length
+      repoContainer.appendChild(branches)
+      
+      resultsContainer.appendChild(repoContainer)    
+    })
+
+
   }
 }

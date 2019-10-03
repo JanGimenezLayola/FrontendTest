@@ -1,4 +1,4 @@
-import { apiService } from './src/apiService.js'
+import { apiService } from './apiService.js'
 
 const search = document.getElementById("search")
 

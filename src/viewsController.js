@@ -50,5 +50,10 @@ export const viewsController = {
 
       resultsInfo.appendChild(infoContainer)
       resultsContainer.appendChild(resultsInfo)    
+  },
+
+  getUserRepos(data) {
+    console.log(data);
+    
   }
 }

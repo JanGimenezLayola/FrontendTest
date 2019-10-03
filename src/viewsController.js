@@ -14,27 +14,41 @@ export const viewsController = {
   getInfoUser(user) {  
 
     const resultsInfo = document.createElement("div")
-    const infoContainer = document.createElement("div")
-    const username = document.createElement("p")
-    const name = document.createElement("h2")
-    const bio = document.createElement("p")
+
+      const imgContainer = document.createElement("div")
+      const img = document.createElement("img")
+
+      const infoContainer = document.createElement("div")
+      const username = document.createElement("p")
+      const name = document.createElement("h2")
+      const bio = document.createElement("p")
+
+
+      resultsInfo.setAttribute("class", "results-container")
+
+      imgContainer.setAttribute("class", "img-container")
+      img.setAttribute("class", "profile-img")
+
+      infoContainer.setAttribute("class", "info-container")
+      username.setAttribute("class", "username")
+      name.setAttribute("class", "name")
+      bio.setAttribute("class", "bio")
     
-    resultsInfo.setAttribute("class", "results-container")
-    infoContainer.setAttribute("class", "info-container")
-    username.setAttribute("class", "username")
-    name.setAttribute("class", "name")
-    bio.setAttribute("class", "bio")
 
-    username.innerHTML = `@${user.login}`
-    infoContainer.appendChild(username)
+      img.src = user.avatar_url
+      imgContainer.appendChild(img)
+      resultsInfo.appendChild(imgContainer)
 
-    name.innerHTML = user.name
-    infoContainer.appendChild(name)
-  
-    bio.innerHTML = user.bio
-    infoContainer.appendChild(bio)
+      username.innerHTML = `@${user.login}`
+      infoContainer.appendChild(username)
+    
+      name.innerHTML = user.name
+      infoContainer.appendChild(name)
+    
+      bio.innerHTML = user.bio
+      infoContainer.appendChild(bio)
 
-    resultsInfo.appendChild(infoContainer)
-    resultsContainer.appendChild(resultsInfo)   
+      resultsInfo.appendChild(infoContainer)
+      resultsContainer.appendChild(resultsInfo)    
   }
 }

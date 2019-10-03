@@ -5,12 +5,19 @@
   <title>Hello, world!</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="./style.scss">
+  <link rel="stylesheet" href="./src/style.scss">
 </head>
 
 <body>
-  <div class="app-container">
-      
-  </div>
+    <div class="app-container">
+        <form id="search">
+            <input id="usernameInput" type="text" placeholder="Search username...">
+            <input type="submit" value="Search">
+        </form>
+        <section id="resultsContainer"></section>
+    </div>
+    <script type="module" src="./app.js"></script>
+    <script type="module" src="./src/viewsController.js"></script>
+    <script type="module" src="./src/apiService.js"></script>
 </body>
 </html>

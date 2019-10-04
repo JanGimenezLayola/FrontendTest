@@ -1,20 +1,19 @@
-import { apiService } from './apiService.js'
-
 const resultsContainer = document.getElementById("resultsContainer")
-const resultsInfo = document.createElement("div")
 
 export const viewsController = {
-
+  
   notExist() {
-
+    
     this.removeAll()
-
+    
+    const errorContainer = document.createElement("div")
+    errorContainer.setAttribute("class", "error-container")
     const h2 = document.createElement("h2")
     h2.setAttribute("class", "error")
     h2.innerHTML = "Does not exist"
 
-    resultsInfo.appendChild(h2)
-    resultsContainer.appendChild(resultsInfo)
+    errorContainer.appendChild(h2)
+    resultsContainer.appendChild(errorContainer)
 
   },
 
@@ -22,6 +21,7 @@ export const viewsController = {
 
     this.removeAll()
 
+    const resultsInfo = document.createElement("div")
 
     const imgContainer = document.createElement("div")
     const img = document.createElement("img")
@@ -61,7 +61,6 @@ export const viewsController = {
   },
 
   getUserRepos(data) {
-
     
     const cardContainer = document.createElement("section")
     cardContainer.setAttribute("class", "repos-container")
@@ -78,18 +77,34 @@ export const viewsController = {
       repoCard.setAttribute("class", "repo-card")
 
       const name = document.createElement("p")
-      const stars = document.createElement("p")
-      const forks = document.createElement("p")
-      
+      const starImg = document.createElement("img")
+      const starImgContainer = document.createElement("div")
+      const star = document.createElement("p")
+      const forkImg = document.createElement("img")
+      const forkImgContainer = document.createElement("div")
+      const fork = document.createElement("p")
+     
+      forkImgContainer.setAttribute("class", "fork-img-container")
+      starImgContainer.setAttribute("class", "star-img-container")
+      forkImg.setAttribute("class", "fork-img")
+      fork.setAttribute("class", "fork-number")
+      starImg.setAttribute("class", "star-img")
+      star.setAttribute("class", "star-number")
 
       name.innerHTML = repo.name
       repoCard.appendChild(name)
 
-      stars.innerHTML = repo.stargazers_count
-      repoDiv.appendChild(stars)      
-
-      forks.innerHTML = repo.forks_count
-      repoDiv.appendChild(forks)
+      starImg.src = "./src/images/star.svg" 
+      starImgContainer.appendChild(starImg)   
+      repoDiv.appendChild(starImgContainer)       
+      star.innerHTML = repo.stargazers_count
+      repoDiv.appendChild(star)      
+      
+      forkImg.src = "./src/images/fork.svg"
+      forkImgContainer.appendChild(forkImg)
+      repoDiv.appendChild(forkImgContainer)     
+      fork.innerHTML = repo.forks_count
+      repoDiv.appendChild(fork)
       
       repoCard.appendChild(repoDiv)
       cardContainer.appendChild(repoCard)  
@@ -100,7 +115,16 @@ export const viewsController = {
   },
 
   removeAll() {
+    
+    const errorContainer = document.querySelector(".error-container")
 
+    if (errorContainer) {
+        while (errorContainer.firstChild) {
+            errorContainer.firstChild.remove()
+        }
+        resultsContainer.removeChild(errorContainer) 
+    }
+    
     const resultsInfo = document.querySelector(".results-container")
 
     if (resultsInfo) {

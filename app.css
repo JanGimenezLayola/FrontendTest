@@ -14,6 +14,17 @@
 #resultsContainer {
   overflow: hidden;
 }
+#resultsContainer .error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 0, 0, 0.363);
+  border: 1px #750000 solid;
+  color: #ad0000;
+  font-weight: 200;
+}
 #resultsContainer .results-container {
   display: flex;
   margin: 15px 0 30px 0;
@@ -64,7 +75,15 @@
 }
 #resultsContainer section .repo-card div {
   display: flex;
+  align-items: center;
   margin-right: 15px;
+}
+#resultsContainer section .repo-card div div {
+  height: 14px;
+  margin: 0 2px 0 10px;
+}
+#resultsContainer section .repo-card div div img {
+  height: 100%;
 }
 #resultsContainer section .repo-card div p {
   margin: 0;

@@ -1,21 +1,27 @@
 import { apiService } from './apiService.js'
 
 const resultsContainer = document.getElementById("resultsContainer")
+const resultsInfo = document.createElement("div")
 
 export const viewsController = {
 
   notExist() {
 
+    this.removeAll()
+
     const h2 = document.createElement("h2")
     h2.setAttribute("class", "error")
     h2.innerHTML = "Does not exist"
-    resultsContainer.appendChild(h2)
+
+    resultsInfo.appendChild(h2)
+    resultsContainer.appendChild(resultsInfo)
 
   },
 
   getInfoUser(user) {  
 
-    const resultsInfo = document.createElement("div")
+    this.removeAll()
+
 
     const imgContainer = document.createElement("div")
     const img = document.createElement("img")
@@ -55,12 +61,15 @@ export const viewsController = {
   },
 
   getUserRepos(data) {
+
+    
+    const cardContainer = document.createElement("section")
+    cardContainer.setAttribute("class", "repos-container")
     
     const title = document.createElement("h3")
     title.setAttribute("class", "repo-container-title")
     title.innerHTML = "Repositories"
-    resultsContainer.appendChild(title)
-    const cardContainer = document.createElement("section")
+    cardContainer.appendChild(title)
         
     data.forEach(async (repo) => {      
             
@@ -88,5 +97,26 @@ export const viewsController = {
     })
 
 
-  }
+  },
+
+  removeAll() {
+
+    const resultsInfo = document.querySelector(".results-container")
+
+    if (resultsInfo) {
+        while (resultsInfo.firstChild) {
+            resultsInfo.firstChild.remove()
+        }
+        resultsContainer.removeChild(resultsInfo) 
+    }
+
+    const resultsReps = document.querySelector(".repos-container")
+
+    if (resultsReps) {
+        while (resultsReps.firstChild) {
+            resultsReps.firstChild.remove()
+        }
+        resultsContainer.removeChild(resultsReps) 
+    }
+},
 }

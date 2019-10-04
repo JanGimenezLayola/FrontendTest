@@ -1,0 +1,107 @@
+#search {
+  display: flex;
+  justify-content: space-evenly;
+}
+#search #usernameInput {
+  width: 15vw;
+}
+#search #submitButton {
+  width: 5vw;
+  text-align: center;
+  padding: 0;
+}
+
+#resultsContainer {
+  overflow: hidden;
+}
+#resultsContainer .results-container {
+  display: flex;
+  margin: 15px 0 30px 0;
+  height: 125px;
+}
+#resultsContainer .results-container .img-container {
+  height: 100%;
+}
+#resultsContainer .results-container .img-container img {
+  height: 100%;
+}
+#resultsContainer .results-container .info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 15px;
+  height: 100%;
+}
+#resultsContainer .results-container .info-container .username {
+  font-style: italic;
+}
+#resultsContainer .results-container .info-container .name {
+  margin: 10px 0;
+}
+#resultsContainer .repo-container-title:after {
+  content: "";
+  margin-top: 15px;
+  display: block;
+  width: 100%;
+  border-top: 2px solid black;
+}
+#resultsContainer section {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  height: 100%;
+}
+#resultsContainer section .repo-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.329);
+}
+#resultsContainer section .repo-card p {
+  margin-left: 15px;
+  font-weight: bold;
+}
+#resultsContainer section .repo-card div {
+  display: flex;
+  margin-right: 15px;
+}
+#resultsContainer section .repo-card div p {
+  margin: 0;
+  font-weight: normal;
+}
+
+/* ---- reset ---- */
+html {
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F0F0F0;
+}
+
+h1, h2, h3, h4, h5, p {
+  margin: 2px;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  background-color: white;
+  box-shadow: 10px 10px 5px 0px rgba(77, 77, 77, 0.431);
+  width: 30vw;
+  max-height: 50vw;
+  margin: 100px auto;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+/*# sourceMappingURL=app.css.map */

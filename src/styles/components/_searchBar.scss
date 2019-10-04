@@ -1,0 +1,13 @@
+#search {
+  display: flex;
+  justify-content: space-evenly;
+  #usernameInput {
+    width: 15vw;
+  }
+  #submitButton {
+    width: 5vw;
+    text-align: center;
+    padding: 0;
+
+  }
+}

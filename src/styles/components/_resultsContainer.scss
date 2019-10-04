@@ -1,0 +1,60 @@
+#resultsContainer {
+  overflow: hidden;
+  .results-container {
+    display: flex;
+    margin: 15px 0 30px 0;
+    height: 125px;
+    .img-container {
+      height: 100%;
+      img {
+        height: 100%
+      }
+    }
+    .info-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 15px;
+      height: 100%;
+      .username {
+        font-style: italic;
+      }
+      .name {
+        margin: 10px 0;
+      }
+    }
+  }
+  .repo-container-title:after {
+    content:"";
+    margin-top: 15px;
+    display: block;
+    width: 100%;
+    border-top: 2px solid black;
+  }
+  section {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    height: 100%;
+    .repo-card {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.329);
+      p {
+        margin-left: 15px;
+        font-weight: bold;
+      }
+      div {
+        display: flex;
+        margin-right: 15px;
+        p {
+          margin: 0;
+          font-weight: normal;
+  
+        }
+      }
+    }
+  }
+}

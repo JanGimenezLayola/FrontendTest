@@ -55,27 +55,36 @@ export const viewsController = {
   },
 
   getUserRepos(data) {
-    console.log(data);
+    
+    const title = document.createElement("h3")
+    title.setAttribute("class", "repo-container-title")
+    title.innerHTML = "Repositories"
+    resultsContainer.appendChild(title)
+    const cardContainer = document.createElement("section")
         
     data.forEach(async (repo) => {      
             
-      const repoContainer = document.createElement("article")
-      repoContainer.setAttribute("class", "repo-container")
+      const repoCard = document.createElement("article")
+      const repoDiv = document.createElement("div")
+      repoCard.setAttribute("class", "repo-card")
 
       const name = document.createElement("p")
       const stars = document.createElement("p")
       const forks = document.createElement("p")
       
+
       name.innerHTML = repo.name
-      repoContainer.appendChild(name)
+      repoCard.appendChild(name)
 
       stars.innerHTML = repo.stargazers_count
-      repoContainer.appendChild(stars)      
+      repoDiv.appendChild(stars)      
 
       forks.innerHTML = repo.forks_count
-      repoContainer.appendChild(forks)
+      repoDiv.appendChild(forks)
       
-      resultsContainer.appendChild(repoContainer)    
+      repoCard.appendChild(repoDiv)
+      cardContainer.appendChild(repoCard)  
+      resultsContainer.appendChild(cardContainer)  
     })
 
 

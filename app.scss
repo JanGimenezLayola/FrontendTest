@@ -1,5 +1,5 @@
-@import './src/styles/components/searchBar';
-@import './src/styles/components/resultsContainer';
+@import './src/styles/searchBar';
+@import './src/styles/resultsContainer';
 
 /* ---- reset ---- */
 
@@ -30,7 +30,7 @@ h1, h2, h3, h4, h5, p {
   box-shadow: 10px 10px 5px 0px rgba(77, 77, 77, 0.431);
 
   width: 30vw;
-  max-height: 50vw;
+  max-height: 35vw;
   margin: 100px auto;
   padding: 20px;
   border-radius: 15px;
